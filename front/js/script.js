@@ -16,14 +16,19 @@ const meubleDisplay = async () => {
   meubleData.forEach((meuble) => {
     const card = document.createElement("div");
     card.id = "items" + meuble._id;
-    card.className = "items article img";
+   card.innerText =`<a href="./product.html?id=42">
+   <article>
+     <img src=".../product01.jpg" alt="Lorem ipsum dolor sit amet, Kanap name1">
+     <h3 class="productName">Kanap name1</h3>
+     <p class="productDescription">Dis enim malesuada risus sapien gravida nulla nisl arcu. Dis enim malesuada risus sapien gravida nulla nisl arcu.</p>
+   </article>`;
 
     const title = document.createElement("h3");
-    title.className = "items article h3";
+    title.className = "items";
     title.textContent = meuble.name.toUpperCase();
 
     const image = document.createElement("img");
-    image.className = "items article img"
+    image.className = "items"
     image.src = meuble.imageUrl;
     image.alt = "image de meuble " + meuble.name;
 
