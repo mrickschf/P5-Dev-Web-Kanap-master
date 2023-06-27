@@ -14,36 +14,29 @@ const meubleDisplay = async () => {
 
   const container = document.getElementById("items");
   meubleData.forEach((meuble) => {
-    const card = document.createElement("div");
+    const card = document.createElement("a");
     card.id = "items" + meuble._id;
-   card.innerText =`<a href="./product.html?id=42">
-   <article>
-     <img src=".../product01.jpg" alt="Lorem ipsum dolor sit amet, Kanap name1">
-     <h3 class="productName">Kanap name1</h3>
-     <p class="productDescription">Dis enim malesuada risus sapien gravida nulla nisl arcu. Dis enim malesuada risus sapien gravida nulla nisl arcu.</p>
-   </article>`;
+    card.href = "./product.html?id=42";
 
-    const title = document.createElement("h3");
-    title.className = "items";
-    title.textContent = meuble.name.toUpperCase();
+    const article = document.createElement("article");
 
     const image = document.createElement("img");
-    image.className = "items"
     image.src = meuble.imageUrl;
     image.alt = "image de meuble " + meuble.name;
 
+    const title = document.createElement("h3");
+    title.className = "productName";
+    title.textContent = meuble.name.toUpperCase();
+
     const description = document.createElement("p");
-    description.className = "items article p";
+    description.className = "productDescription";
     description.textContent = meuble.description;
 
-    const price = document.createElement("p");
-    price.className = "items article p";
-    price.textContent = meuble.price.toString().replace(/0+$/, "") + " Euro";
+    article.appendChild(image);
+    article.appendChild(title);
+    article.appendChild(description);
 
-    card.appendChild(title);
-    card.appendChild(image);
-    card.appendChild(description);
-    card.appendChild(price);
+    card.appendChild(article);
 
     container.appendChild(card);
   });
